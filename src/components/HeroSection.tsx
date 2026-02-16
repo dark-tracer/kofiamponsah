@@ -14,14 +14,14 @@ const HeroSection = () => {
           <img
             src={portraitPlaceholder}
             alt="Portrait of the deceased"
-            className="w-full h-full object-cover"
-          />
+            className="w-full h-full object-cover" />
+
           <div className="absolute inset-0 rounded-full ring-2 ring-inset ring-[hsl(var(--gold))/0.3]" />
         </div>
 
         {/* Name */}
-        <h1 className="text-4xl md:text-6xl font-serif-display text-gold gold-glow tracking-wide leading-tight mb-4">
-          [Father's Full Name]
+        <h1 className="text-4xl md:text-6xl font-serif-display text-gold gold-glow tracking-wide leading-tight mb-4">Kofi Duffour Amponsah
+
         </h1>
 
         {/* Years */}
@@ -43,8 +43,8 @@ const HeroSection = () => {
 
       {/* Kente border at bottom */}
       <div className="absolute bottom-0 left-0 right-0 kente-border-thick" />
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;
