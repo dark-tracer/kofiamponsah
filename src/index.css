@@ -73,7 +73,7 @@
     background-image: url('@/assets/crumpled-paper.jpg');
     background-size: 600px;
     background-repeat: repeat;
-    opacity: 0.12;
+    opacity: 1;
     pointer-events: none;
     z-index: 0;
     mix-blend-mode: overlay;
