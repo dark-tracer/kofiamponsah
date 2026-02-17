@@ -63,6 +63,20 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url('@/assets/crumpled-paper.jpg');
+    background-size: 600px;
+    background-repeat: repeat;
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: overlay;
   }
 
   h1, h2, h3, h4, h5, h6 {
