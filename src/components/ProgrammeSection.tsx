@@ -1,4 +1,5 @@
 import AdinkraDivider from './AdinkraDivider';
+import AdinkraFloating from './AdinkraDecorations';
 
 const programmeItems = [
   { time: '8:00 AM', event: 'Filing Past / Viewing of Remains', note: '' },
@@ -15,8 +16,10 @@ const programmeItems = [
 
 const ProgrammeSection = () => {
   return (
-    <section id="programme" className="py-20 px-4 bg-charcoal scroll-mt-nav">
-      <div className="max-w-3xl mx-auto">
+    <section id="programme" className="py-20 px-4 bg-charcoal scroll-mt-nav relative overflow-hidden">
+      <AdinkraFloating symbol="adinkrahene" className="absolute top-10 right-8 w-20 h-20 text-[hsl(var(--gold-muted))] opacity-[0.05] md:w-28 md:h-28" />
+      <AdinkraFloating symbol="dwennimmen" className="absolute bottom-10 left-6 w-16 h-16 text-[hsl(var(--gold-muted))] opacity-[0.05] md:w-24 md:h-24" />
+      <div className="max-w-3xl mx-auto relative z-10">
         <h2 className="text-3xl md:text-4xl font-serif-display text-gold text-center gold-glow mb-2">
           Ayie Dwumadie
         </h2>

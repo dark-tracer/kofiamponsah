@@ -1,4 +1,5 @@
 import AdinkraDivider from './AdinkraDivider';
+import AdinkraFloating from './AdinkraDecorations';
 
 interface EulogyCardProps {
   title: string;
@@ -18,8 +19,11 @@ const EulogyCard = ({ title, placeholder }: EulogyCardProps) => (
 
 const EulogySection = () => {
   return (
-    <section id="eulogies" className="py-20 px-4 bg-charcoal-deep scroll-mt-nav">
-      <div className="max-w-3xl mx-auto">
+    <section id="eulogies" className="py-20 px-4 bg-charcoal-deep scroll-mt-nav relative overflow-hidden">
+      <AdinkraFloating symbol="gye-nyame" className="absolute top-16 left-6 w-20 h-20 text-[hsl(var(--gold-muted))] opacity-[0.06] md:w-28 md:h-28" />
+      <AdinkraFloating symbol="ese-ne-tekrema" className="absolute bottom-20 right-8 w-16 h-16 text-[hsl(var(--gold-muted))] opacity-[0.05] md:w-24 md:h-24" />
+      <AdinkraFloating symbol="funtunfunefu" className="absolute top-1/2 right-4 w-12 h-12 text-[hsl(var(--gold-muted))] opacity-[0.04] md:w-16 md:h-16" />
+      <div className="max-w-3xl mx-auto relative z-10">
         <h2 className="text-3xl md:text-4xl font-serif-display text-gold text-center gold-glow mb-2">
           Awerɛhyem
         </h2>
