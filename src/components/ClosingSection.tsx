@@ -1,9 +1,12 @@
 import AdinkraDivider from './AdinkraDivider';
+import AdinkraFloating from './AdinkraDecorations';
 
 const ClosingSection = () => {
   return (
-    <section className="py-20 px-4 bg-charcoal-deep">
-      <div className="max-w-3xl mx-auto text-center">
+    <section className="py-20 px-4 bg-charcoal-deep relative overflow-hidden">
+      <AdinkraFloating symbol="gye-nyame" className="absolute top-12 right-10 w-24 h-24 text-[hsl(var(--gold-muted))] opacity-[0.06] md:w-32 md:h-32" />
+      <AdinkraFloating symbol="adinkrahene" className="absolute bottom-12 left-8 w-18 h-18 text-[hsl(var(--gold-muted))] opacity-[0.05] md:w-24 md:h-24" />
+      <div className="max-w-3xl mx-auto text-center relative z-10">
         <AdinkraDivider symbol="nyame-dua" />
 
         {/* Proverb */}
