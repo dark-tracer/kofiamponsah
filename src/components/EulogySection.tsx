@@ -36,7 +36,7 @@ const EulogySection = () => {
         <div className="mt-8 space-y-8">
           <EulogyCard
             title="Eulogy from His Wife"
-            placeholder="[Wife's eulogy text will go here. Share memories, love, and the life you built together. This section is styled for comfortable reading with dark text on a warm cream background.]"
+            placeholder={"There are no words adequate enough to describe the loss of my husband. A man cherished deeply by everyone whose life he touched.\n\nWords cannot begin to express the sadness that fills my heart knowing you have passed on to another world. The news left everyone speechless, and the void you have left behind is one that cannot be measured.\n\nIt is a great loss for me. He will always hold a unique place in my heart. I know there is nothing I can do to make this pain go away, but I take comfort in knowing that he has left behind an eternal flame within our hearts. Even when I cannot see the sun, I know it is still there, shining down from the sky, spreading its warmth, reminding me that love never truly fades.\n\nDeath can only separate us in body but never in spirit. You will remain in my heart forever, today, tomorrow, and always. Until we meet again."}
           />
 
           <AdinkraDivider symbol="nkontim" className="py-4" />
