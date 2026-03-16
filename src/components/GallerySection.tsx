@@ -1,5 +1,12 @@
 import { useState } from 'react';
 import AdinkraDivider from './AdinkraDivider';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from '@/components/ui/carousel';
 
 const placeholderPhotos = [
   { id: 1, alt: 'Family moment', placeholder: true },
@@ -25,25 +32,32 @@ const GallerySection = () => {
 
         <AdinkraDivider symbol="sankofa" />
 
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-          {placeholderPhotos.map((photo, i) => (
-            <button
-              key={photo.id}
-              onClick={() => setLightboxIndex(i)}
-              className="aspect-square bg-muted rounded-sm overflow-hidden border-2 border-gold-muted/30 hover:border-gold transition-all duration-300 group relative cursor-pointer"
-              aria-label={`View photo: ${photo.alt}`}
-            >
-              <div className="w-full h-full flex items-center justify-center bg-charcoal-deep">
-                <div className="text-center p-4">
-                  <svg className="w-8 h-8 mx-auto text-gold-soft/40 mb-2" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z" />
-                  </svg>
-                  <p className="text-muted-foreground text-xs font-body">{photo.alt}</p>
-                </div>
-              </div>
-              <div className="absolute inset-0 bg-[hsl(var(--gold))/0.05] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </button>
-          ))}
+        <div className="mt-8 px-12">
+          <Carousel opts={{ loop: true }} className="w-full">
+            <CarouselContent>
+              {placeholderPhotos.map((photo, i) => (
+                <CarouselItem key={photo.id} className="md:basis-1/2 lg:basis-1/3">
+                  <button
+                    onClick={() => setLightboxIndex(i)}
+                    className="aspect-square w-full bg-muted rounded-sm overflow-hidden border-2 border-gold-muted/30 hover:border-gold transition-all duration-300 group relative cursor-pointer"
+                    aria-label={`View photo: ${photo.alt}`}
+                  >
+                    <div className="w-full h-full flex items-center justify-center bg-charcoal-deep">
+                      <div className="text-center p-4">
+                        <svg className="w-8 h-8 mx-auto text-gold-soft/40 mb-2" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z" />
+                        </svg>
+                        <p className="text-muted-foreground text-xs font-body">{photo.alt}</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-[hsl(var(--gold))/0.05] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </button>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="border-gold-muted/30 text-gold hover:bg-gold/10 hover:text-gold-soft" />
+            <CarouselNext className="border-gold-muted/30 text-gold hover:bg-gold/10 hover:text-gold-soft" />
+          </Carousel>
         </div>
 
         <p className="text-center text-muted-foreground text-xs mt-6 font-body italic">
