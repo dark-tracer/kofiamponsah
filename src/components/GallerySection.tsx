@@ -34,7 +34,7 @@ const GallerySection = () => {
         <AdinkraDivider symbol="sankofa" />
 
         <div className="mt-8 px-12">
-          <Carousel opts={{ loop: true }} className="w-full">
+          <Carousel opts={{ loop: true }} plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]} className="w-full">
             <CarouselContent>
               {placeholderPhotos.map((photo, i) => (
                 <CarouselItem key={photo.id} className="md:basis-1/2 lg:basis-1/3">
