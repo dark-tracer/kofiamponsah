@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import AdinkraDivider from './AdinkraDivider';
+import Autoplay from 'embla-carousel-autoplay';
 import {
   Carousel,
   CarouselContent,
