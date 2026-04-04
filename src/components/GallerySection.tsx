@@ -9,13 +9,28 @@ import {
   CarouselNext,
 } from '@/components/ui/carousel';
 
-const placeholderPhotos = [
-  { id: 1, alt: 'Family moment', placeholder: true },
-  { id: 2, alt: 'Traditional ceremony', placeholder: true },
-  { id: 3, alt: 'Personal moment', placeholder: true },
-  { id: 4, alt: 'With loved ones', placeholder: true },
-  { id: 5, alt: 'Celebration', placeholder: true },
-  { id: 6, alt: 'Legacy', placeholder: true },
+import photo1 from '@/assets/gallery/photo1.jpg';
+import photo2 from '@/assets/gallery/photo2.jpg';
+import photo3 from '@/assets/gallery/photo3.jpg';
+import photo4 from '@/assets/gallery/photo4.jpg';
+import photo5 from '@/assets/gallery/photo5.jpg';
+import photo6 from '@/assets/gallery/photo6.jpg';
+import photo7 from '@/assets/gallery/photo7.jpg';
+import photo8 from '@/assets/gallery/photo8.jpg';
+import photo9 from '@/assets/gallery/photo9.jpg';
+import photo10 from '@/assets/gallery/photo10.jpg';
+
+const photos = [
+  { id: 1, src: photo1, alt: 'Graduation day with son' },
+  { id: 2, src: photo2, alt: 'Family celebration' },
+  { id: 3, src: photo3, alt: 'Portrait' },
+  { id: 4, src: photo4, alt: 'With wife and newborn' },
+  { id: 5, src: photo5, alt: 'Holding his child' },
+  { id: 6, src: photo6, alt: 'With his wife' },
+  { id: 7, src: photo7, alt: 'Studio portrait' },
+  { id: 8, src: photo8, alt: 'With a friend' },
+  { id: 9, src: photo9, alt: 'At his shop' },
+  { id: 10, src: photo10, alt: 'At work' },
 ];
 
 const GallerySection = () => {
@@ -36,22 +51,20 @@ const GallerySection = () => {
         <div className="mt-8 px-12">
           <Carousel opts={{ loop: true }} plugins={[Autoplay({ delay: 5000, stopOnInteraction: true })]} className="w-full">
             <CarouselContent>
-              {placeholderPhotos.map((photo, i) => (
+              {photos.map((photo, i) => (
                 <CarouselItem key={photo.id} className="md:basis-1/2 lg:basis-1/3">
                   <button
                     onClick={() => setLightboxIndex(i)}
-                    className="aspect-square w-full bg-muted rounded-sm overflow-hidden border-2 border-gold-muted/30 hover:border-gold transition-all duration-300 group relative cursor-pointer"
+                    className="aspect-square w-full rounded-sm overflow-hidden border-2 border-gold-muted/30 hover:border-gold transition-all duration-300 group relative cursor-pointer"
                     aria-label={`View photo: ${photo.alt}`}
                   >
-                    <div className="w-full h-full flex items-center justify-center bg-charcoal-deep">
-                      <div className="text-center p-4">
-                        <svg className="w-8 h-8 mx-auto text-gold-soft/40 mb-2" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z" />
-                        </svg>
-                        <p className="text-muted-foreground text-xs font-body">{photo.alt}</p>
-                      </div>
-                    </div>
-                    <div className="absolute inset-0 bg-[hsl(var(--gold))/0.05] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </button>
                 </CarouselItem>
               ))}
@@ -60,10 +73,6 @@ const GallerySection = () => {
             <CarouselNext className="border-gold-muted/30 text-gold hover:bg-gold/10 hover:text-gold-soft" />
           </Carousel>
         </div>
-
-        <p className="text-center text-muted-foreground text-xs mt-6 font-body italic">
-          Replace these placeholders with your own photos
-        </p>
       </div>
 
       {/* Lightbox */}
@@ -80,24 +89,27 @@ const GallerySection = () => {
             ×
           </button>
 
-          <div className="max-w-3xl w-full bg-charcoal rounded-sm p-8 text-center border border-gold-muted/30" onClick={(e) => e.stopPropagation()}>
-            <div className="aspect-video bg-charcoal-deep rounded-sm flex items-center justify-center mb-4">
-              <p className="text-muted-foreground font-body text-sm">
-                {placeholderPhotos[lightboxIndex]?.alt}
-              </p>
+          <div className="max-w-3xl w-full bg-charcoal rounded-sm p-4 border border-gold-muted/30" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-center mb-4">
+              <img
+                src={photos[lightboxIndex]?.src}
+                alt={photos[lightboxIndex]?.alt}
+                className="max-h-[70vh] w-auto rounded-sm object-contain"
+              />
             </div>
+            <p className="text-center text-muted-foreground font-body text-sm mb-4">
+              {photos[lightboxIndex]?.alt}
+            </p>
             <div className="flex justify-between">
               <button
-                onClick={() => setLightboxIndex(Math.max(0, lightboxIndex - 1))}
-                className="text-gold hover:text-gold-soft font-body text-sm disabled:opacity-30"
-                disabled={lightboxIndex === 0}
+                onClick={() => setLightboxIndex((lightboxIndex - 1 + photos.length) % photos.length)}
+                className="text-gold hover:text-gold-soft font-body text-sm"
               >
                 ← Previous
               </button>
               <button
-                onClick={() => setLightboxIndex(Math.min(placeholderPhotos.length - 1, lightboxIndex + 1))}
-                className="text-gold hover:text-gold-soft font-body text-sm disabled:opacity-30"
-                disabled={lightboxIndex === placeholderPhotos.length - 1}
+                onClick={() => setLightboxIndex((lightboxIndex + 1) % photos.length)}
+                className="text-gold hover:text-gold-soft font-body text-sm"
               >
                 Next →
               </button>
