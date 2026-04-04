@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import AdinkraDivider from './AdinkraDivider';
 import Autoplay from 'embla-carousel-autoplay';
+import { Maximize, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
@@ -38,6 +39,33 @@ const photos = [
 const GallerySection = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
+  const handlePrev = useCallback(() => {
+    setLightboxIndex((prev) => prev !== null ? (prev - 1 + photos.length) % photos.length : null);
+  }, []);
+
+  const handleNext = useCallback(() => {
+    setLightboxIndex((prev) => prev !== null ? (prev + 1) % photos.length : null);
+  }, []);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightboxIndex(null);
+      if (e.key === 'ArrowLeft') handlePrev();
+      if (e.key === 'ArrowRight') handleNext();
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [lightboxIndex, handlePrev, handleNext]);
+
+  // Block right-click globally when lightbox is open
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const block = (e: Event) => e.preventDefault();
+    document.addEventListener('contextmenu', block);
+    return () => document.removeEventListener('contextmenu', block);
+  }, [lightboxIndex]);
+
   return (
     <section id="gallery" className="py-20 px-4 bg-charcoal scroll-mt-nav">
       <div className="max-w-5xl mx-auto">
@@ -55,19 +83,28 @@ const GallerySection = () => {
             <CarouselContent>
               {photos.map((photo, i) => (
                 <CarouselItem key={photo.id} className="md:basis-1/2 lg:basis-1/3">
-                  <button
-                    onClick={() => setLightboxIndex(i)}
-                    className="w-full rounded-sm overflow-hidden border-2 border-gold-muted/30 hover:border-gold transition-all duration-500 group relative cursor-pointer hover-scale"
-                    aria-label={`View photo: ${photo.alt}`}
+                  <div
+                    className="w-full rounded-sm overflow-hidden border-2 border-gold-muted/30 hover:border-gold transition-all duration-500 group relative cursor-pointer hover-scale select-none"
+                    onContextMenu={(e) => e.preventDefault()}
+                    onDragStart={(e) => e.preventDefault()}
                   >
                     <img
                       src={photo.src}
                       alt={photo.alt}
-                      className="w-full h-auto object-contain animate-fade-in"
+                      className="w-full h-auto object-contain animate-fade-in pointer-events-none"
                       loading="lazy"
+                      draggable={false}
                     />
-                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </button>
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <button
+                        onClick={() => setLightboxIndex(i)}
+                        className="bg-black/60 rounded-full p-3 text-gold hover:text-gold-soft hover:bg-black/80 transition-all"
+                        aria-label={`View full screen: ${photo.alt}`}
+                      >
+                        <Maximize className="h-5 w-5" />
+                      </button>
+                    </div>
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -77,46 +114,62 @@ const GallerySection = () => {
         </div>
       </div>
 
-      {/* Lightbox */}
+      {/* Fullscreen Lightbox */}
       {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black flex items-center justify-center select-none"
           onClick={() => setLightboxIndex(null)}
+          onContextMenu={(e) => e.preventDefault()}
         >
+          {/* Watermark overlay to deter screenshots */}
+          <div className="absolute inset-0 pointer-events-none z-10 flex items-center justify-center opacity-[0.03]">
+            <p className="text-white text-6xl font-bold rotate-[-30deg] whitespace-nowrap">
+              In Loving Memory
+            </p>
+          </div>
+
           <button
-            className="absolute top-4 right-4 text-gold text-3xl hover:text-gold-soft transition-colors"
+            className="absolute top-4 right-4 z-20 text-gold text-3xl hover:text-gold-soft transition-colors bg-black/50 rounded-full p-2"
             onClick={() => setLightboxIndex(null)}
-            aria-label="Close lightbox"
+            aria-label="Close fullscreen"
           >
-            ×
+            <X className="h-6 w-6" />
           </button>
 
-          <div className="max-w-3xl w-full bg-charcoal rounded-sm p-4 border border-gold-muted/30" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-center mb-4">
-              <img
-                src={photos[lightboxIndex]?.src}
-                alt={photos[lightboxIndex]?.alt}
-                className="max-h-[70vh] w-auto rounded-sm object-contain"
-              />
-            </div>
-            <p className="text-center text-muted-foreground font-body text-sm mb-4">
-              {photos[lightboxIndex]?.alt}
-            </p>
-            <div className="flex justify-between">
-              <button
-                onClick={() => setLightboxIndex((lightboxIndex - 1 + photos.length) % photos.length)}
-                className="text-gold hover:text-gold-soft font-body text-sm"
-              >
-                ← Previous
-              </button>
-              <button
-                onClick={() => setLightboxIndex((lightboxIndex + 1) % photos.length)}
-                className="text-gold hover:text-gold-soft font-body text-sm"
-              >
-                Next →
-              </button>
-            </div>
+          {/* Previous */}
+          <button
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-gold hover:text-gold-soft bg-black/50 rounded-full p-2 transition-colors"
+            onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+            aria-label="Previous photo"
+          >
+            <ChevronLeft className="h-8 w-8" />
+          </button>
+
+          {/* Next */}
+          <button
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-gold hover:text-gold-soft bg-black/50 rounded-full p-2 transition-colors"
+            onClick={(e) => { e.stopPropagation(); handleNext(); }}
+            aria-label="Next photo"
+          >
+            <ChevronRight className="h-8 w-8" />
+          </button>
+
+          <div
+            className="max-w-4xl max-h-[90vh] w-full flex items-center justify-center p-4"
+            onClick={(e) => e.stopPropagation()}
+            onDragStart={(e) => e.preventDefault()}
+          >
+            <img
+              src={photos[lightboxIndex]?.src}
+              alt={photos[lightboxIndex]?.alt}
+              className="max-h-[85vh] max-w-full object-contain rounded-sm pointer-events-none"
+              draggable={false}
+            />
           </div>
+
+          <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-muted-foreground font-body text-sm z-20">
+            {photos[lightboxIndex]?.alt} — {lightboxIndex + 1} / {photos.length}
+          </p>
         </div>
       )}
     </section>
