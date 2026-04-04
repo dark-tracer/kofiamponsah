@@ -175,3 +175,11 @@
     scroll-margin-top: 5rem;
   }
 }
+
+/* Prevent image saving/downloading */
+#gallery img {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
