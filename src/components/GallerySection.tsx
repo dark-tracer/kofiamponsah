@@ -55,13 +55,13 @@ const GallerySection = () => {
                 <CarouselItem key={photo.id} className="md:basis-1/2 lg:basis-1/3">
                   <button
                     onClick={() => setLightboxIndex(i)}
-                    className="aspect-square w-full rounded-sm overflow-hidden border-2 border-gold-muted/30 hover:border-gold transition-all duration-300 group relative cursor-pointer"
+                    className="w-full rounded-sm overflow-hidden border-2 border-gold-muted/30 hover:border-gold transition-all duration-500 group relative cursor-pointer hover-scale"
                     aria-label={`View photo: ${photo.alt}`}
                   >
                     <img
                       src={photo.src}
                       alt={photo.alt}
-                      className="w-full h-full object-cover"
+                      className="w-full h-auto object-contain animate-fade-in"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
