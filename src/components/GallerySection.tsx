@@ -19,6 +19,7 @@ import photo7 from '@/assets/gallery/photo7.jpg';
 import photo8 from '@/assets/gallery/photo8.jpg';
 import photo9 from '@/assets/gallery/photo9.jpg';
 import photo10 from '@/assets/gallery/photo10.jpg';
+import photo11 from '@/assets/gallery/photo11.jpg';
 
 const photos = [
   { id: 1, src: photo1, alt: 'Graduation day with son' },
@@ -31,6 +32,7 @@ const photos = [
   { id: 8, src: photo8, alt: 'With a friend' },
   { id: 9, src: photo9, alt: 'At his shop' },
   { id: 10, src: photo10, alt: 'At work' },
+  { id: 11, src: photo11, alt: 'Family portrait' },
 ];
 
 const GallerySection = () => {
