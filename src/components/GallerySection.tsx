@@ -32,6 +32,7 @@ const photos = [
   { id: 8, src: photo8, alt: 'With a friend' },
   { id: 9, src: photo9, alt: 'At his shop' },
   { id: 10, src: photo10, alt: 'At work' },
+  { id: 11, src: photo11, alt: 'Family portrait' },
 ];
 
 const GallerySection = () => {
