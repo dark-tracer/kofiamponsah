@@ -160,9 +160,10 @@ const GallerySection = () => {
             onDragStart={(e) => e.preventDefault()}
           >
             <img
+              key={lightboxIndex}
               src={photos[lightboxIndex]?.src}
               alt={photos[lightboxIndex]?.alt}
-              className="max-h-[85vh] max-w-full object-contain rounded-sm pointer-events-none"
+              className="max-h-[85vh] max-w-full object-contain rounded-sm pointer-events-none animate-[lightbox-fade_0.4s_ease-out]"
               draggable={false}
             />
           </div>
