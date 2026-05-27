@@ -34,8 +34,8 @@ const ProgrammeSection = () => {
               key={i}
               className="flex items-start gap-4 md:gap-8 py-4 border-b border-gold-muted/20 last:border-b-0 group"
             >
-              <span className="text-gold font-serif-display text-sm md:text-base w-24 md:w-28 shrink-0 pt-0.5">
-                {item.time}
+              <span className="text-gold font-serif-display text-sm md:text-base w-8 md:w-10 shrink-0 pt-0.5">
+                {item.order}.
               </span>
               <div className="flex-1">
                 <p className="text-cream text-sm md:text-base font-body">
