@@ -2,16 +2,15 @@ import AdinkraDivider from './AdinkraDivider';
 import AdinkraFloating from './AdinkraDecorations';
 
 const programmeItems = [
-  { time: '8:00 AM', event: 'Filing Past / Viewing of Remains', note: '' },
-  { time: '9:00 AM', event: 'Libation Pouring', note: 'Traditional rites by family elder' },
-  { time: '9:30 AM', event: 'Opening Hymn & Prayer', note: '' },
-  { time: '10:00 AM', event: 'Biography Reading', note: '' },
-  { time: '10:20 AM', event: 'Tributes', note: 'Family, friends, and colleagues' },
-  { time: '11:00 AM', event: 'Sermon & Hymns', note: '' },
-  { time: '11:30 AM', event: 'Family Condolences', note: '' },
-  { time: '12:00 PM', event: 'Final Farewell & Commendation', note: '' },
-  { time: '12:30 PM', event: 'Burial Rites', note: '' },
-  { time: '1:30 PM', event: 'Reception & Refreshments', note: '' },
+  { order: '1', event: 'Opening Prayer', note: '' },
+  { order: '2', event: 'Scripture Reading', note: 'Deaconess Grace' },
+  { order: '3', event: 'Praise & Worship', note: 'Deacon Eric (Philadelphia Choir)' },
+  { order: '4', event: 'Song Ministration', note: 'Deacon Eric (Philadelphia Choir)' },
+  { order: '5', event: 'Sermon / Word of Exhortation', note: 'Rev. Owusu Antwi Malik' },
+  { order: '6', event: 'Tribute by Family', note: 'Family' },
+  { order: '7', event: 'Offertory', note: 'Philadelphia Choir' },
+  { order: '8', event: 'Closing Prayer & Benediction', note: 'Rev. Owusu Antwi Malik' },
+  { order: '9', event: 'Procession to Cemetery / Burial Ground', note: '' },
 ];
 
 const ProgrammeSection = () => {
@@ -35,8 +34,8 @@ const ProgrammeSection = () => {
               key={i}
               className="flex items-start gap-4 md:gap-8 py-4 border-b border-gold-muted/20 last:border-b-0 group"
             >
-              <span className="text-gold font-serif-display text-sm md:text-base w-24 md:w-28 shrink-0 pt-0.5">
-                {item.time}
+              <span className="text-gold font-serif-display text-sm md:text-base w-8 md:w-10 shrink-0 pt-0.5">
+                {item.order}.
               </span>
               <div className="flex-1">
                 <p className="text-cream text-sm md:text-base font-body">
