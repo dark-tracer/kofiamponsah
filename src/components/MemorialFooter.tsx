@@ -4,15 +4,15 @@ const MemorialFooter = () => {
       <div className="kente-border-thick" />
       <div className="max-w-3xl mx-auto px-4 py-10 text-center space-y-4">
         <p className="font-serif-display text-gold text-lg">
-          [Funeral Home Name]
+          Funeral Service
         </p>
         <p className="text-muted-foreground text-sm font-body">
-          [Address Line 1, City, Region]
+          Bodomase, Last Bus Stop, Sekyere Kumawu District, Ashanti Region
         </p>
         <div className="flex items-center justify-center gap-3 text-muted-foreground text-sm font-body">
-          <span>[Date of Funeral]</span>
+          <span>30th May 2026</span>
           <span className="text-gold-soft">·</span>
-          <span>[Time]</span>
+          <span>9:00 AM</span>
         </div>
 
         {/* Burial Location Map */}
