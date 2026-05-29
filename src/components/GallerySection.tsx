@@ -69,12 +69,9 @@ const GallerySection = () => {
   return (
     <section id="gallery" className="py-20 px-4 bg-charcoal scroll-mt-nav">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-serif-display text-gold text-center gold-glow mb-2">
-          Mfonini
-        </h2>
-        <p className="text-center text-muted-foreground text-sm tracking-widest uppercase mb-8 font-body">
+        <h2 className="text-3xl md:text-4xl font-serif-display text-gold text-center gold-glow mb-8">
           Photo Gallery
-        </p>
+        </h2>
 
         <AdinkraDivider symbol="sankofa" />
 

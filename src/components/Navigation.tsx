@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
 const navItems = [
-  { label: 'Fie', href: '#home', english: 'Home' },
-  { label: 'Ayie Dwumadie', href: '#programme', english: 'Programme' },
-  { label: 'Awerɛhyem', href: '#eulogies', english: 'Eulogies' },
-  { label: 'Mfonini', href: '#gallery', english: 'Gallery' },
+  { label: 'Home', href: '#home', english: 'Home' },
+  { label: 'Programme', href: '#programme', english: 'Programme' },
+  { label: 'Eulogies', href: '#eulogies', english: 'Eulogies' },
+  { label: 'Gallery', href: '#gallery', english: 'Gallery' },
 ];
 
 const Navigation = () => {
@@ -70,7 +70,7 @@ const Navigation = () => {
               onClick={() => handleClick(item.href)}
               className="block w-full text-left px-6 py-4 text-gold-soft hover:text-gold hover:bg-charcoal transition-colors text-sm tracking-widest uppercase font-body border-b border-gold-muted/20"
             >
-              {item.label} <span className="text-muted-foreground ml-2 text-xs normal-case">({item.english})</span>
+              {item.label}
             </button>
           ))}
         </div>

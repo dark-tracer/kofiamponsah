@@ -24,12 +24,9 @@ const EulogySection = () => {
       <AdinkraFloating symbol="ese-ne-tekrema" className="absolute bottom-20 right-8 w-16 h-16 text-[hsl(var(--gold-muted))] opacity-[0.05] md:w-24 md:h-24" />
       <AdinkraFloating symbol="funtunfunefu" className="absolute top-1/2 right-4 w-12 h-12 text-[hsl(var(--gold-muted))] opacity-[0.04] md:w-16 md:h-16" />
       <div className="max-w-3xl mx-auto relative z-10">
-        <h2 className="text-3xl md:text-4xl font-serif-display text-gold text-center gold-glow mb-2">
-          Awerɛhyem
-        </h2>
-        <p className="text-center text-muted-foreground text-sm tracking-widest uppercase mb-8 font-body">
+        <h2 className="text-3xl md:text-4xl font-serif-display text-gold text-center gold-glow mb-8">
           Eulogies & Tributes
-        </p>
+        </h2>
 
         <AdinkraDivider symbol="sankofa" />
 

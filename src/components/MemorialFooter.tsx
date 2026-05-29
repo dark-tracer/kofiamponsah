@@ -46,7 +46,7 @@ const MemorialFooter = () => {
         <div className="w-12 h-px bg-gradient-to-r from-transparent via-[hsl(var(--gold-muted))] to-transparent mx-auto my-6" />
         
         <p className="text-gold-soft font-serif-display italic text-sm">
-          "Yɛda mo ase" — We thank you
+          "We thank you"
         </p>
         
         <p className="text-muted-foreground/50 text-xs font-body mt-4">
