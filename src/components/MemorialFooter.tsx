@@ -20,11 +20,11 @@ const MemorialFooter = () => {
           <p className="font-serif-display text-gold text-sm tracking-wider uppercase">
             Burial Ceremony Location
           </p>
-          <p className="text-muted-foreground text-xs font-body">Sekyere Kumawu, Ghana</p>
+          <p className="text-muted-foreground text-xs font-body">Near Bodomase, Sekyere Kumawu (VPRV+RQW Eduamuyao)</p>
           <div className="rounded-lg overflow-hidden border border-gold-muted/20 mx-auto max-w-xl">
             <iframe
-              title="Burial Location - Sekyere Kumawu, Ghana"
-              src="https://www.google.com/maps?q=Sekyere+Kumawu&output=embed"
+              title="Burial Location - Near Bodomase, Eduamuyao"
+              src="https://www.google.com/maps?q=6.8921033,-1.2555608&z=16&output=embed"
               width="100%"
               height="250"
               style={{ border: 0 }}
@@ -34,7 +34,7 @@ const MemorialFooter = () => {
             />
           </div>
           <a
-            href="https://maps.app.goo.gl/uReBLRP4YZ9XYhdZ9"
+            href="https://www.google.com/maps?q=6.8921033,-1.2555608"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block text-gold-soft hover:text-gold text-xs font-body underline underline-offset-4 transition-colors"
