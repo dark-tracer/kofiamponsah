@@ -12,10 +12,7 @@ const ClosingSection = () => {
         {/* Proverb */}
         <blockquote className="my-10">
           <p className="text-xl md:text-2xl font-serif-display italic text-gold gold-glow leading-relaxed">
-            "Onipa na ɔma onipa ye"
-          </p>
-          <p className="text-muted-foreground text-sm mt-3 font-body tracking-wider">
-            It is people who make people human
+            "It is people who make people human"
           </p>
         </blockquote>
 
@@ -29,9 +26,6 @@ const ClosingSection = () => {
             have been a comfort beyond words.
           </p>
           <p className="text-gold font-serif-display text-lg mt-6">
-            Yɛda mo ase
-          </p>
-          <p className="text-muted-foreground text-xs tracking-widest uppercase font-body">
             We thank you
           </p>
         </div>

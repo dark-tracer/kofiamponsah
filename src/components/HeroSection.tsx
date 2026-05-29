@@ -41,12 +41,8 @@ const HeroSection = () => {
         {/* Divider */}
         <div className="w-24 h-px bg-gradient-to-r from-transparent via-[hsl(var(--gold))] to-transparent mb-6" />
 
-        {/* Akan phrase */}
         <p className="text-lg md:text-xl font-serif-display italic text-gold-soft gold-glow mb-2">
-          "Da yie, Ɔdɔfo"
-        </p>
-        <p className="text-sm text-muted-foreground tracking-wider uppercase font-body">
-          Sleep well, Beloved
+          "Sleep well, Beloved"
         </p>
       </div>
 
